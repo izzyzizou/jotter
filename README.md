@@ -92,3 +92,7 @@ test/merge.test.js    tests for the merge logic (npm test)
 
 - `package.json` overrides `@grpc/grpc-js` to a patched version. Firebase only uses it in Node.js, never in the browser build; the override clears `npm audit` warnings without changing what ships.
 - Fonts (Literata and IBM Plex Mono) are bundled with the app, so it makes no requests to font services.
+
+## Contributing and license
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Released under the [MIT License](LICENSE).
