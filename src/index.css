@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* Layout: one sheet of paper, edge to edge. The note is a single column about
+   66 characters wide, centered on it; the only control sits top right. */
+:root {
+  --paper: #f6f7f9; /* cool sheet */
+  --ink: #1d2230; /* graphite, leaning blue */
+  --muted: #646b7e;
+  --rule: #dfe2ea;
+  --raised: #ffffff; /* menus */
+  --accent: #2f4bd8; /* ballpoint blue: caret, focus, sign-in */
+  --wash: #eaedfb; /* accent tint for hover */
+  --mark-bg: #fdeb8b; /* highlighter yellow: selected text */
+  --mark-fg: #1d2230;
+  --ok: #2c8a5a;
+  --warn: #b7791f;
+  --err: #c0392b;
+  --shadow: 0 12px 32px rgb(22 27 45 / 0.12), 0 1px 2px rgb(22 27 45 / 0.08);
+  --face-note: "Literata Variable", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --face-ui: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121419;
+    --ink: #e4e7ee;
+    --muted: #8b91a3;
+    --rule: #282c37;
+    --raised: #1a1d24;
+    --accent: #93a6ff;
+    --wash: #1c2238;
+    --mark-bg: #5b4e14;
+    --mark-fg: #fbf4d2;
+    --ok: #5cc98c;
+    --warn: #e3ae57;
+    --err: #f07d6b;
+    --shadow: 0 14px 36px rgb(0 0 0 / 0.5), 0 1px 2px rgb(0 0 0 / 0.4);
+    color-scheme: dark;
+  }
+}
+
+/* Tailwind names for the tokens above: bg-paper, text-ink, font-note, … */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-raised: var(--raised);
+  --color-accent: var(--accent);
+  --color-wash: var(--wash);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-err: var(--err);
+  --font-note: var(--face-note);
+  --font-ui: var(--face-ui);
+}
+
+/* Fill the screen, clear of phone notches and home indicators. */
+html {
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--face-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--mark-bg);
+  color: var(--mark-fg);
+}
+
+.note {
+  font-family: var(--face-note);
+  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  line-height: 1.7;
+  font-optical-sizing: auto;
+  padding-block: 1.25rem 35vh;
+  padding-inline: max(0px, calc((100% - 66ch) / 2));
+  caret-color: var(--accent);
+  tab-size: 4;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+  /* lines fade out under the top edge as the note scrolls */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 1.25rem);
+  mask-image: linear-gradient(to bottom, transparent 0, black 1.25rem);
+}
+.note::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+  }
+}
