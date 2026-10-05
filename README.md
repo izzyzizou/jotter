@@ -1,5 +1,7 @@
 # Pocket Jotter
 
+[![CI](https://github.com/izzyzizou/jotter/actions/workflows/ci.yml/badge.svg)](https://github.com/izzyzizou/jotter/actions/workflows/ci.yml)
+
 A one-page notepad for getting ideas down fast. The whole screen is the note, it saves as you type, and the only button is **Sign in** in the top right.
 
 - **Signed out**, the note is saved in the browser and survives refreshes.
