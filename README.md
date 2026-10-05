@@ -1,4 +1,4 @@
-# Pocket Jotter
+# Jotter
 
 [![CI](https://github.com/izzyzizou/jotter/actions/workflows/ci.yml/badge.svg)](https://github.com/izzyzizou/jotter/actions/workflows/ci.yml)
 

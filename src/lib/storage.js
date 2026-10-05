@@ -2,9 +2,9 @@
 // blocked or cleared (private windows, previews), and the page must keep
 // working without it.
 
-const KEY_BROWSER = "pocket-jotter:browser-note:v1";
-const KEY_SESSION = "pocket-jotter:session:v1";
-const accountKey = (uid) => "pocket-jotter:account:v1:" + uid;
+const KEY_BROWSER = "jotter:browser-note:v1";
+const KEY_SESSION = "jotter:session:v1";
+const accountKey = (uid) => "jotter:account:v1:" + uid;
 
 function read(key) {
   try {

@@ -24,7 +24,7 @@ const db = getFirestore(app);
 // Firestore documents can hold up to 1 MiB; leave room for the other fields.
 export const maxBytes = 900_000;
 
-const REDIRECT_FLAG = "pocket-jotter:redirecting";
+const REDIRECT_FLAG = "jotter:redirecting";
 
 const codeError = (code, cause) => Object.assign(new Error(code), { code, cause });
 

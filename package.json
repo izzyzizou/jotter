@@ -1,5 +1,5 @@
 {
-  "name": "pocket-jotter",
+  "name": "jotter",
   "private": true,
   "version": "1.0.0",
   "description": "A one-page notepad that saves as you type, with optional sign-in to sync notes to the cloud.",
