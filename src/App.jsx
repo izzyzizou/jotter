@@ -250,6 +250,18 @@ export default function App() {
     ta.scrollTop = scrollTop;
   };
 
+  // Tab types a tab character instead of moving focus. Shift+Tab is left
+  // alone so keyboard users can still leave the note.
+  const onTab = (e) => {
+    if (e.key !== "Tab" || e.shiftKey || e.ctrlKey || e.altKey || e.metaKey || e.nativeEvent.isComposing) return;
+    e.preventDefault();
+    const ta = e.currentTarget;
+    // execCommand keeps the browser's undo history and fires an input event.
+    if (document.execCommand && document.execCommand("insertText", false, "\t")) return;
+    ta.setRangeText("\t", ta.selectionStart, ta.selectionEnd, "end");
+    onInput();
+  };
+
   // Swap in a different note entirely (signing out).
   const showNote = (next) => {
     const ta = taRef.current;
@@ -572,6 +584,7 @@ export default function App() {
         ref={taRef}
         defaultValue={boot.text}
         onInput={onInput}
+        onKeyDown={onTab}
         onCompositionStart={() => engineRef.current && engineRef.current.setComposing(true)}
         onCompositionEnd={() => {
           if (engineRef.current) engineRef.current.setComposing(false);
