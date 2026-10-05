@@ -67,6 +67,14 @@ body,
 #root {
   height: 100%;
 }
+/* follow the visible viewport on phones, where the keyboard and URL bar resize it */
+@supports (height: 100dvh) {
+  html,
+  body,
+  #root {
+    height: 100dvh;
+  }
+}
 body {
   margin: 0;
   background: var(--paper);
@@ -85,8 +93,9 @@ body {
   font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   line-height: 1.7;
   font-optical-sizing: auto;
-  padding-block: 1.25rem 35vh;
-  padding-inline: max(0px, calc((100% - 66ch) / 2));
+  padding-block: 1.25rem 2rem;
+  --measure: 66ch;
+  padding-inline: max(0px, calc((100% - var(--measure)) / 2));
   caret-color: var(--accent);
   tab-size: 4;
   scrollbar-width: thin;
@@ -94,6 +103,25 @@ body {
   /* lines fade out under the top edge as the note scrolls */
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 1.25rem);
   mask-image: linear-gradient(to bottom, transparent 0, black 1.25rem);
+}
+/* wider writing column on desktop */
+@media (min-width: 1024px) {
+  .note {
+    --measure: 92ch;
+  }
+}
+@media (min-width: 1536px) {
+  .note {
+    --measure: 112ch;
+  }
+}
+/* phones: tighter spacing */
+@media (max-width: 639px) {
+  .note {
+    line-height: 1.6;
+    padding-block: 0.75rem 1.5rem;
+    overflow-wrap: anywhere;
+  }
 }
 .note::placeholder {
   color: var(--muted);
