@@ -93,7 +93,7 @@ body {
   font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   line-height: 1.7;
   font-optical-sizing: auto;
-  padding-block: 1.25rem 35vh;
+  padding-block: 1.25rem 2rem;
   --measure: 66ch;
   padding-inline: max(0px, calc((100% - var(--measure)) / 2));
   caret-color: var(--accent);
@@ -115,12 +115,11 @@ body {
     --measure: 112ch;
   }
 }
-/* phones: tighter spacing, and less empty space under the last line so the
-   caret isn't pushed far up when the keyboard is open */
+/* phones: tighter spacing */
 @media (max-width: 639px) {
   .note {
     line-height: 1.6;
-    padding-block: 0.75rem 40dvh;
+    padding-block: 0.75rem 1.5rem;
     overflow-wrap: anywhere;
   }
 }
